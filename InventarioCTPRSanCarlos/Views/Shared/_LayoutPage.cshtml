@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <h1>Inventario Colegio Tecnico Profesional Regional de San Carlos</h1>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    
+
+
+    @*Todo esto es necesario para el funcionamiento de React*@
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+   
+    @*<script src="@Url.Content("~/Scripts/Tutorial.jsx")"></script>*@ 
+</body>
+</html>
