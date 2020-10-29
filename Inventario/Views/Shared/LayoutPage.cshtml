@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+</head>
+<body>
+    @*Inicio de contenido*@
+
+    @*Cabecera de la pagina*@
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-xl-10 border float">
+                <h1>Inventario Colegio Tecnico Profesional Regional de San carlos</h1>
+            </div>
+            <div class="col-xl-2 border ">
+                <p>Aca va el logo del cole</p>
+            </div>
+        </header>
+    </div>
+
+    @*Barra de navegacion*@
+    <div class="container-fluid">
+        <nav class="">
+            <ul>
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Bienes", "VerBienes", "Bienes")</li>
+                <li>
+                    <p>AdministrarBienes</p>
+                    <ul>
+                        <li>@Html.ActionLink("Anadir Bienes", "AnadirBienes", "Bienes")</li>
+                        <li>@Html.ActionLink("Actualizar Bienes", "ActualizarBienes", "Bienes")</li>
+                        <li>@Html.ActionLink("Dar de baja Bienes", "DarBaja", "Bienes")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Administrar Usuarios", "Index", "Home")</li>
+                <li>@Html.ActionLink("Generar Reporte", "Index", "Home")</li>
+            </ul>
+        </nav>
+    </div>
+    
+    @*Contenido de otras vistas*@
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @*Scripts de Bootstrap*@
+    <script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.0.0.slim.min.js")"></script>
+</body>
+</html>
