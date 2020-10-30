@@ -10,6 +10,8 @@ namespace Inventario.Models
         public ApplicationDbContext() :base("con")
         {
         }
+
+
         public DbSet<Bienes> Bienes { get; set; }
     }
 }

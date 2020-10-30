@@ -1,34 +1,14 @@
-﻿
+﻿@model IEnumerable<Inventario.Models.Bienes>
+
 @{
     ViewBag.Title = "Ver Bienes";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
+<table class="table">
+   
 
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Numero de patrminio </th>
-                <th>Codigo de Barras</th>
-                <th>Numero de Factura</th>
-                <th>Descripcion</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Serie</th>
-                <th>Estado</th>
-                <th>Condicion</th>
-                <th>Ubicacion</th>
-                <th>Especialidad</th>
-            </tr>
-        </thead>
-    <tbody>
-        <tr>
-            <td>hola</td>
-        </tr>
-    </tbody>
-    </table>
+@foreach (var item in Model)
+{
+}
 
-</div>
-<h2 >Ver Bienes</h2>
-
-
+</table>
