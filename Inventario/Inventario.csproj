@@ -284,6 +284,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Styles\" />
+    <Folder Include="Views\LogIn\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -8,6 +8,7 @@ namespace Inventario.Models
 {
     public class Bienes
     {
+        //Atributos
         [Key]
         public string numeroDePatrimonio { get; private set; }//llave primaria
         public string codigoDeBarras { get; private set; }
@@ -23,6 +24,7 @@ namespace Inventario.Models
         public string estado { get; private set; }
         public string condicion { get; private set; }
 
+        //Metodos constructor
         public Bienes()
         {
             numeroDePatrimonio = "CIF000";
@@ -39,6 +41,7 @@ namespace Inventario.Models
             estado = "Excelente";
             condicion = "Activo";
         }
+
 
         public void setNumeroDePatrimonio(string NDP)
         {
