@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventario.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,22 @@ namespace Inventario.Controllers
 {
     public class BienesController : Controller
     {
+        //Este objeto se encarga de proveer los datos de la Bd
+
+
+        private BienesRepository repositorio;
+
+        public BienesController()
+        {
+            repositorio = new BienesRepository();
+        }
+        
+
         // GET: Bienes
         public ActionResult VerBienes()
         {
-            return View();
+            var model = repositorio.obtenerTodosLosBienes();
+            return View(model);
         }
 
         public ActionResult AnadirBienes()

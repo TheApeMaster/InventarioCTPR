@@ -1,8 +1,21 @@
-﻿
+﻿@model IEnumerable<Inventario.Models.Bienes>
+
 @{
     ViewBag.Title = "Ver Bienes";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
-
-<h2>VerBienes</h2>
-
+<table class="table">
+   <thead>
+       <tr>
+            <th>Numero de patrimonio</th>
+       </tr>
+   </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
+            </tr>
+        }
+    </tbody>
+</table>
