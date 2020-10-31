@@ -5,10 +5,17 @@
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
 <table class="table">
-   
-
-@foreach (var item in Model)
-{
-}
-
+   <thead>
+       <tr>
+            <th>Numero de patrimonio</th>
+       </tr>
+   </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
+            </tr>
+        }
+    </tbody>
 </table>

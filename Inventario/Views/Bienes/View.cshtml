@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Inventario.Models.Bienes>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoDeBarras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anadidoPor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numeroDeFactura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ley)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idEspecialidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ubicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.condicion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoDeBarras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anadidoPor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroDeFactura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ley)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEspecialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.condicion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.numeroDePatrimonio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.numeroDePatrimonio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.numeroDePatrimonio })
+        </td>
+    </tr>
+}
+
+</table>
