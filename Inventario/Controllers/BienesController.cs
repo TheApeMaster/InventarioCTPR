@@ -61,9 +61,18 @@ namespace Inventario.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Bienes.Add(bienes);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                try
+                {
+                    db.Bienes.Add(bienes);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
             return View(bienes);

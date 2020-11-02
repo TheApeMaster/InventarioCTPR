@@ -20,7 +20,7 @@ namespace Inventario.Models
         [StringLength(30)]
         public string descripcion { get; set; }
 
-        [Required]
+       
         public string anadidoPor { get; set; }//Llave foranea
 
         [Required]
