@@ -14,7 +14,6 @@ namespace Inventario.Services
             using (var db = new ApplicationDbContext())
             {
                 return db.Bienes.ToList();
-                
             }
         }
     }

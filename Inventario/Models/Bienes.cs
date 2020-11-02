@@ -46,7 +46,7 @@ namespace Inventario.Models
         [Required]
         public string condicion { get; private set; }
 
-        //Metodos constructor
+        //Metodos constructores
         public Bienes()
         {
             numeroDePatrimonio = "CIF000";

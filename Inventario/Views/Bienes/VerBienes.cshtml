@@ -8,6 +8,18 @@
    <thead>
        <tr>
             <th>Numero de patrimonio</th>
+            <th>Codigo de Barras</th>
+           <th>Descripcion</th>
+           <th>Marca</th>
+           <th>Modelo</th>
+           <th>Serie</th>
+           <th>Ley que financia</th>
+           <th>Ubicacion</th>
+           <th>Especialidad</th>
+           <th>Estado</th>
+           <th>Condicion</th>
+           <th>Numero de factura</th>
+           <th>anadido por</th>
        </tr>
    </thead>
     <tbody>
@@ -15,6 +27,18 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
+                <td>@Html.DisplayFor(modelItem => item.codigoDeBarras)</td>
+                <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.marca)</td>
+                <td>@Html.DisplayFor(modelItem => item.modelo)</td>
+                <td>@Html.DisplayFor(modelItem => item.serie)</td>
+                <td>@Html.DisplayFor(modelItem => item.ley)</td>
+                <td>@Html.DisplayFor(modelItem => item.ubicacion)</td>
+                <td>@Html.DisplayFor(modelItem => item.idEspecialidad)</td>
+                <td>@Html.DisplayFor(modelItem => item.estado)</td>
+                <td>@Html.DisplayFor(modelItem => item.condicion)</td>
+                <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
+                <td>@Html.DisplayFor(modelItem => item.anadidoPor)</td>            
             </tr>
         }
     </tbody>
