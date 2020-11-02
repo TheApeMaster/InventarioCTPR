@@ -14,15 +14,18 @@ namespace Inventario.Controllers
     public class BienesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        BienesRepository repositorio = new BienesRepository();
+
+        private BienesRepository repositorio =new BienesRepository();
+
+
 
 
         // GET: Bienes
         public ActionResult VerBienes()
         {
-          
-
-            return View(db.Bienes.ToList());
+                
+            var model = repositorio.obtenerTodosLosBienes();
+            return View(model);
         }
 
         // GET: Bienes/Details/5
@@ -61,18 +64,8 @@ namespace Inventario.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                try
-                {
-                    db.Bienes.Add(bienes);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                repositorio.anadirBien(bienes);
+                
             }
 
             return View(bienes);

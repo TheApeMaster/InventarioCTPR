@@ -12,9 +12,38 @@ namespace Inventario.Services
        public  List<Bienes> obtenerTodosLosBienes()
         {
             using (var db = new ApplicationDbContext())
-            {
-                return db.Bienes.ToList();
-            }
+
+                try
+                {
+         
+                        return db.Bienes.ToList();
+                    
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+        }
+
+
+        public void anadirBien(Bienes bienes)
+        {
+
+            using (var db = new ApplicationDbContext())
+
+                try
+                {
+
+
+                    db.Bienes.Add(bienes);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
         }
     }
 }

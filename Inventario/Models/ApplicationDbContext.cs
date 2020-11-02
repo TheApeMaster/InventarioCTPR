@@ -11,6 +11,7 @@ namespace Inventario.Models
         {
         }
 
+        public DbSet<Especialidad> Especialidad { get; set; }
 
         public DbSet<Bienes> Bienes { get; set; }
     }

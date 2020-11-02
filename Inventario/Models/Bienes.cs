@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,11 +13,13 @@ namespace Inventario.Models
     {
         //Atributos
         [Key]
-        public string numeroDePatrimonio { get; private set; }//llave primaria
+        public string numeroDePatrimonio { get; set; }//llave primaria
 
         [Required]
-        public string codigoDeBarras { get; private set; }
+        public string codigoDeBarras { get;  set; }
 
+
+    
         [StringLength(30)]
         public string descripcion { get; set; }
 
@@ -24,7 +27,7 @@ namespace Inventario.Models
         public string anadidoPor { get; set; }//Llave foranea
 
         [Required]
-        public string numeroDeFactura { get; private set; }//llave foranea
+        public string numeroDeFactura { get;  set; }//llave foranea
 
         public string ley { get; set; }
         [StringLength(20)]
@@ -34,17 +37,19 @@ namespace Inventario.Models
         [StringLength(20)]
         public string serie { get; set; }
 
-        [Required]
-        public string idEspecialidad { get; set; }//Llave Foranea
+
+        public string idEspecialidad { set; get; }
+        [ForeignKey("idEspecialidad")]
+        public Especialidad Especialidad{ get; set; }//Llave Foranea
 
         [StringLength(3)]
         public string ubicacion { get; set; }
 
         [Required]
-        public string estado { get; private set; }
+        public string estado { get;  set; }
 
         [Required]
-        public string condicion { get; private set; }
+        public string condicion { get;  set; }
 
         //Metodos constructores
         public Bienes()
@@ -65,29 +70,29 @@ namespace Inventario.Models
         }
 
 
-        public void setNumeroDePatrimonio(string NDP)
-        {
-            numeroDePatrimonio = NDP;
-        }
-        public void setCodigoDeBarras(string CDB)
-        {
-            codigoDeBarras = CDB;
-        }
-        public void setNumeroDeFactura(string NDF)
-        {
-            numeroDeFactura = NDF;
-        }
-        public void setIdEspecialidad(string IE)
-        {
-            idEspecialidad = IE;
-        }
-        public void setCondicion(string C)
-        {
-            condicion = C;
-        }
-        public void setEstado(string E)
-        {
-            estado = E;
-        }
+        //public void setNumeroDePatrimonio(string NDP)
+        //{
+        //    numeroDePatrimonio = NDP;
+        //}
+        //public void setCodigoDeBarras(string CDB)
+        //{
+        //    codigoDeBarras = CDB;
+        //}
+        //public void setNumeroDeFactura(string NDF)
+        //{
+        //    numeroDeFactura = NDF;
+        //}
+        //public void setIdEspecialidad(string IE)
+        //{
+        //    idEspecialidad = IE;
+        //}
+        //public void setCondicion(string C)
+        //{
+        //    condicion = C;
+        //}
+        //public void setEstado(string E)
+        //{
+        //    estado = E;
+        //}
     }
 }
