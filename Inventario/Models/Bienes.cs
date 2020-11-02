@@ -18,11 +18,8 @@ namespace Inventario.Models
         [Required]
         public string codigoDeBarras { get;  set; }
 
-
-    
-        [StringLength(30)]
+         [StringLength(30)]
         public string descripcion { get; set; }
-
        
         public string anadidoPor { get; set; }//Llave foranea
 
@@ -30,15 +27,17 @@ namespace Inventario.Models
         public string numeroDeFactura { get;  set; }//llave foranea
 
         public string ley { get; set; }
+
         [StringLength(20)]
         public string marca { get; set; }
+
         [StringLength(20)]
         public string modelo { get; set; }
+
         [StringLength(20)]
         public string serie { get; set; }
 
-
-        public string idEspecialidad { set; get; }
+        public string idEspecialidad { get; set; }
         [ForeignKey("idEspecialidad")]
         public Especialidad Especialidad{ get; set; }//Llave Foranea
 
@@ -63,7 +62,7 @@ namespace Inventario.Models
             marca = "Desconocido";
             modelo = "Desconocido";
             serie = "0000";
-            idEspecialidad = "Ninguna";
+            idEspecialidad = "nin01";
             ubicacion = "C-0";
             estado = "Excelente";
             condicion = "Activo";

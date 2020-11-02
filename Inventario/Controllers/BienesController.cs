@@ -72,18 +72,22 @@ namespace Inventario.Controllers
         }
 
         // GET: Bienes/Edit/5
-        public ActionResult Edit(string id)
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public ActionResult ActualizarBienes(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bienes bienes = db.Bienes.Find(id);
-            if (bienes == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bienes);
+            //if (id == null)
+            //{
+            //  // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            return View(id);
+            //}
+         //   Bienes bienes = db.Bienes.Find(id);
+            //if (bienes == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(bienes);
         }
 
         // POST: Bienes/Edit/5
@@ -91,7 +95,7 @@ namespace Inventario.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
+        public ActionResult ActualizarBienes([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
         {
             if (ModelState.IsValid)
             {

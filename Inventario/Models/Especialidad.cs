@@ -8,11 +8,18 @@ namespace Inventario.Models
 {
     public class Especialidad
     {
-        [Key][StringLength(10)]
-        string idEspecialidad { get; set; }
+       [Key]
+       public string idEspecialidad { get; set; }//Llave Primaria
 
-        [StringLength(20)]
-        string nombreEspecialidad { get; set; }
+       [StringLength(20)]
+        public string nombreEspecialidad { get; set; }
 
+
+        public Especialidad()
+        {
+            idEspecialidad = "nin00";
+
+            nombreEspecialidad = "Ninguna";
+        }
     }
 }
