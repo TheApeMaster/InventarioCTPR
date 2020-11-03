@@ -12,12 +12,9 @@ namespace Inventario.Services
        public  List<Bienes> obtenerTodosLosBienes()
         {
             using (var db = new ApplicationDbContext())
-
                 try
                 {
-         
-                        return db.Bienes.ToList();
-                    
+                    return db.Bienes.ToList();
                 }
                 catch (Exception)
                 {
@@ -26,16 +23,25 @@ namespace Inventario.Services
                 }
         }
 
+        public Bienes buscarBien(string id)
+        {
+            using(var db = new ApplicationDbContext())
+            try
+            {
+                return db.Bienes.Find(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         public void anadirBien(Bienes bienes)
         {
-
             using (var db = new ApplicationDbContext())
-
                 try
                 {
-
-
                     db.Bienes.Add(bienes);
                     db.SaveChanges();
                 }

@@ -18,17 +18,13 @@ namespace Inventario.Controllers
         private BienesRepository repositorio =new BienesRepository();
 
 
-
-
         // GET: Bienes
         public ActionResult VerBienes()
         {
-                
             var model = repositorio.obtenerTodosLosBienes();
             return View(model);
         }
 
-        // GET: Bienes/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -51,7 +47,6 @@ namespace Inventario.Controllers
             ViewBag.listaC = listaCondicion.obtenerListaCondicion();
             ViewBag.listaE = listaEstado.obtenerListaEstados();
 
-
             return View();
         }
 
@@ -65,24 +60,38 @@ namespace Inventario.Controllers
             if (ModelState.IsValid)
             {
                 repositorio.anadirBien(bienes);
-                
             }
-
             return View(bienes);
         }
 
-        // GET: Bienes/Edit/5
-        [HttpGet]
         [ValidateAntiForgeryToken]
-        public ActionResult ActualizarBienes(string id)
+        public ActionResult BuscarBien(string id)
         {
-            //if (id == null)
-            //{
+            if (id == "")
+            {
+                return RedirectToAction("ActualizarBienes");
+            }else
+            {
+                Bienes bien = repositorio.buscarBien(id);
+                if (bien == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("ActualizarBienes",bien);
+            } 
+        }
+
+
+        //Actualizar Bienes :Get
+        [HttpGet]
+        public ActionResult ActualizarBienes()
+        {
+            return View();
             //  // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            return View(id);
+            //return View(id);
             //}
-         //   Bienes bienes = db.Bienes.Find(id);
+            //   Bienes bienes = db.Bienes.Find(id);
             //if (bienes == null)
             //{
             //    return HttpNotFound();
