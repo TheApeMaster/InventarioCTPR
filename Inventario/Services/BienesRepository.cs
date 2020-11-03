@@ -1,6 +1,7 @@
 ﻿using Inventario.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -36,6 +37,22 @@ namespace Inventario.Services
             }
         }
 
+        public void actualizarBien(Bienes bien)
+        {
+            using (var db = new ApplicationDbContext())
+
+                try
+                {
+                    db.Entry(bien).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+             
+        }
 
         public void anadirBien(Bienes bienes)
         {

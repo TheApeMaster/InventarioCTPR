@@ -87,16 +87,6 @@ namespace Inventario.Controllers
         public ActionResult ActualizarBienes()
         {
             return View();
-            //  // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            //return View(id);
-            //}
-            //   Bienes bienes = db.Bienes.Find(id);
-            //if (bienes == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(bienes);
         }
 
         // POST: Bienes/Edit/5
@@ -108,9 +98,8 @@ namespace Inventario.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bienes).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                repositorio.actualizarBien(bienes);
+                return RedirectToAction("VerBienes");
             }
             return View(bienes);
         }
