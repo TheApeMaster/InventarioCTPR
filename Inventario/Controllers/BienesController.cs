@@ -21,7 +21,9 @@ namespace Inventario.Controllers
         // GET: Bienes
         public ActionResult VerBienes()
         {
-            var model = repositorio.obtenerTodosLosBienes();
+            //var model = repositorio.obtenerTodosLosBienes();
+            var model = repositorio.obtenerBienesActivos();
+
             return View(model);
         }
 
@@ -42,11 +44,13 @@ namespace Inventario.Controllers
         // GET: Bienes/Create
         public ActionResult AnadirBienes()
         {
-            GeneradorDeListas listaCondicion = new GeneradorDeListas();
-            GeneradorDeListas listaEstado = new GeneradorDeListas();
-            ViewBag.listaC = listaCondicion.obtenerListaCondicion();
-            ViewBag.listaE = listaEstado.obtenerListaEstados();
+            //GeneradorDeListas listaCondicion = new GeneradorDeListas();
+            //GeneradorDeListas listaEstado = new GeneradorDeListas();
+            //ViewBag.listaC = listaCondicion.obtenerListaCondicion();
+            //ViewBag.listaE = listaEstado.obtenerListaEstados();
 
+            var pruebalist = new SelectList(new[] {"Excelente","Bueno"});
+            ViewBag.pruebaList = pruebalist;
             return View();
         }
 
@@ -90,8 +94,7 @@ namespace Inventario.Controllers
         }
 
         // POST: Bienes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ActualizarBienes([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)

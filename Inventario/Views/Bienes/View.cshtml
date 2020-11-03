@@ -1,41 +1,33 @@
 ﻿@model Inventario.Models.Bienes
 
 @{
-    ViewBag.Title = "Actualizar Bienes";
+    ViewBag.Title = "View";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
 
-<h2>ActualizarBienes</h2>
+<h2>View</h2>
 
 
-
-@using (Html.BeginForm("BuscarBien","Bienes"))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        <h3>Digite numero de patrimonio</h3>
-        <div class="col-md-offset-2 col-md-10" >
-            <input type="text" name="id" placeholder=@Html.DisplayFor(model => model.numeroDePatrimonio) >
-        </div>
-        <input type="submit" value="buscar"/>
-    </div>
-}
-
-@using (Html.BeginForm("ActualizarBienes","Bienes",FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        
+        <h4>Bienes</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.numeroDePatrimonio)
+        <div class="form-group">
+            @Html.LabelFor(model => model.numeroDePatrimonio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numeroDePatrimonio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.numeroDePatrimonio, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.codigoDeBarras, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.codigoDeBarras, new { htmlAttributes = new { @class = "form-control" }})
+                @Html.EditorFor(model => model.codigoDeBarras, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.codigoDeBarras, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -97,11 +89,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idEspecialidad, "Especialidad", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idEspecialidad, "idEspecialidad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.idEspecialidad, new { htmlAttributes = new { @class = "form-control" } })
-                
-                @*@Html.DropDownList("idEspecialidad", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownList("idEspecialidad", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idEspecialidad, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -132,14 +122,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar Cambios" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Volver", "VerBienes")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

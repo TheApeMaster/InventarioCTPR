@@ -24,6 +24,23 @@ namespace Inventario.Services
                 }
         }
 
+        public List<Bienes> obtenerBienesActivos()
+        {
+            using (var db = new ApplicationDbContext())
+            try
+            {
+                      var bienes = db.Bienes.SqlQuery("SELECT * FROM dbo.\"Bienes\" where condicion = 'Activo'").ToList();
+                      return bienes;
+
+                }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         public Bienes buscarBien(string id)
         {
             using(var db = new ApplicationDbContext())

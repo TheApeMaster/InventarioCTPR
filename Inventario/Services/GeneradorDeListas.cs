@@ -17,22 +17,26 @@ namespace Inventario.Services
             listado = new List<SelectListItem>();
         }
 
+
+
+
+
         public List<SelectListItem> obtenerListaEstados()
         {
             listado.Add(
-                new SelectListItem() { Text = "Excelente", Value = "excelente" }
+                new SelectListItem() { Text = "Excelente", Value = "Excelente" }
             );
 
             listado.Add(
-                new SelectListItem() { Text = "Bueno", Value = "bueno" }
+                new SelectListItem() { Text = "Bueno", Value = "Bueno" }
             );
 
             listado.Add(
-            new SelectListItem() { Text = "Regular", Value = "regular" }
+            new SelectListItem() { Text = "Regular", Value = "Regular" }
              );
 
             listado.Add(
-            new SelectListItem() { Text = "Malo", Value = "amlo" }
+            new SelectListItem() { Text = "Malo", Value = "Malo" }
             );
             return listado;
         }

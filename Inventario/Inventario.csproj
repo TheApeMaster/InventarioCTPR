@@ -257,7 +257,6 @@
     <Content Include="Views\Shared\LayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Bienes\AnadirBienes.cshtml" />
-    <Content Include="Views\Bienes\DarBaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -266,9 +265,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011022107210_initial.cs" />
-    <Compile Include="Migrations\202011022107210_initial.designer.cs">
-      <DependentUpon>202011022107210_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202011032122493_inventario.cs" />
+    <Compile Include="Migrations\202011032122493_inventario.designer.cs">
+      <DependentUpon>202011032122493_inventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -287,6 +286,9 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Views\Bienes\VerBienes.cshtml" />
     <Content Include="Views\Bienes\ActualizarBienes.cshtml" />
+    <Content Include="Views\DarBaja.cshtml" />
+    <Content Include="Views\Bienes\DarBaja.cshtml" />
+    <Content Include="Views\Bienes\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -298,7 +300,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Styles\" />
     <Folder Include="Views\LogIn\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -307,8 +308,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011022107210_initial.resx">
-      <DependentUpon>202011022107210_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011032122493_inventario.resx">
+      <DependentUpon>202011032122493_inventario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
