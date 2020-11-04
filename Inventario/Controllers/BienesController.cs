@@ -23,7 +23,7 @@ namespace Inventario.Controllers
         {
             //var model = repositorio.obtenerTodosLosBienes();
             var model = repositorio.obtenerBienesActivos();
-
+           
             return View(model);
         }
 
@@ -44,13 +44,8 @@ namespace Inventario.Controllers
         // GET: Bienes/Create
         public ActionResult AnadirBienes()
         {
-            //GeneradorDeListas listaCondicion = new GeneradorDeListas();
-            //GeneradorDeListas listaEstado = new GeneradorDeListas();
-            //ViewBag.listaC = listaCondicion.obtenerListaCondicion();
-            //ViewBag.listaE = listaEstado.obtenerListaEstados();
-
-            var pruebalist = new SelectList(new[] {"Excelente","Bueno"});
-            ViewBag.pruebaList = pruebalist;
+            ViewBag.idEspecialidad = new SelectList(db.Especialidad,"idEspecialidad","nombreEspecialidad");
+         
             return View();
         }
 
@@ -65,6 +60,8 @@ namespace Inventario.Controllers
             {
                 repositorio.anadirBien(bienes);
             }
+
+            ViewBag.idEspecialidad = new SelectList(db.Especialidad, "idEspecialidad", "nombreEspecialidad", bienes.idEspecialidad);
             return View(bienes);
         }
 

@@ -1,5 +1,5 @@
 ﻿@model Inventario.Models.Bienes
-
+@using Inventario.Models
 @{
     ViewBag.Title = "Actualizar Bienes";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
@@ -115,18 +115,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.estado, "Estado del bien", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.estado,
+                                       new SelectList(Enum.GetValues(typeof(EstadosEnum))),
+                                       "Selecciona Estado")
+                @Html.ValidationMessageFor(model => model.estado, "*", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.condicion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.condicion, "Condicion del bien(Si esta activo o de baja)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.condicion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.condicion, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.condicion,
+                                       new SelectList(Enum.GetValues(typeof(CondicionesEnum))),
+                                       "Selecciona Condicion")
+                @Html.ValidationMessageFor(model => model.condicion, "*Obligatorio", new { @class = "text-danger" })
             </div>
         </div>
 

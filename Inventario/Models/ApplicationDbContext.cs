@@ -7,12 +7,18 @@ namespace Inventario.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext() :base("con")
+
+        public DbSet<Especialidad> Especialidad { get; set; }
+        public DbSet<Bienes> Bienes { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+
+        //    modelBuilder.Entity<Bienes>().HasRequired(x => x.idEspecialidad);
+        //   base.OnModelCreating(modelBuilder);     
+        //}
+        public ApplicationDbContext() : base("con")
         {
         }
 
-        public DbSet<Especialidad> Especialidad { get; set; }
-
-        public DbSet<Bienes> Bienes { get; set; }
     }
 }

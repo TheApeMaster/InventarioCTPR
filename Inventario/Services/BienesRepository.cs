@@ -9,7 +9,22 @@ namespace Inventario.Services
 {
     public class BienesRepository
     {
-       
+       public List<Especialidad> obtenerEspecialidades()
+        {
+
+            using (var db = new ApplicationDbContext())
+            try
+            {
+                    return db.Especialidad.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
        public  List<Bienes> obtenerTodosLosBienes()
         {
             using (var db = new ApplicationDbContext())
@@ -29,7 +44,7 @@ namespace Inventario.Services
             using (var db = new ApplicationDbContext())
             try
             {
-                      var bienes = db.Bienes.SqlQuery("SELECT * FROM dbo.\"Bienes\" where condicion = 'Activo'").ToList();
+                      var bienes = db.Bienes.SqlQuery("SELECT * FROM dbo.\"Bienes\" where condicion = 0").ToList();
                       return bienes;
 
                 }

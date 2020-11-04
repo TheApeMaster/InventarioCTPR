@@ -1,31 +1,28 @@
 ﻿
 @using System.Web.UI.WebControls;
+@using Inventario.Models;
 @model Inventario.Models.Bienes
 @{
-    ViewBag.Title = "AnadirBienes";
+    ViewBag.Title = "Anadir Bienes";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
-@*Contenido del dropdown list para el estado del articulo *@
-@{
-
-}
-
    <h2>AnadirBienes</h2>
+    <h2></h2>
 
     @using (Html.BeginForm("AnadirBienes", "Bienes", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Bienes</h4>
+      <p>Digite los datos requeridos</p>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
         <div class="form-group">
-            @Html.LabelFor(model => model.numeroDePatrimonio, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.numeroDePatrimonio,"Numero de Patrimonio", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.numeroDePatrimonio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.numeroDePatrimonio, "*", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.numeroDePatrimonio, "*Obligatorio", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -81,7 +78,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.idEspecialidad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.idEspecialidad, new { htmlAttributes = new { @class = "form-control" } })
+               
+                @Html.DropDownList("idEspecialidad")        
+    
+    @*@Html.EditorFor(model => model.idEspecialidad, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.idEspecialidad, "*", new { @class = "text-danger" })
             </div>
         </div>
@@ -97,22 +97,20 @@
         <div class="form-group">
             @Html.LabelFor(model => model.estado,"Estado del bien", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor( model => model.estado,)
-               
-                @*@Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor( model => model.estado,
+                                       new SelectList(Enum.GetValues(typeof(EstadosEnum))),
+                                       "Selecciona Estado")
                 @Html.ValidationMessageFor(model => model.estado, "*", new { @class = "text-danger" })
-            
-            
             </div>
          </div>
          
         <div class="form-group">
-                @Html.LabelFor(model => model.condicion, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.condicion,"Condicion del bien", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                   @*@Html.DropDownList("listaPrueba", (List<SelectListItem>)ViewBag.listaC)*@
-                    @Html.EditorFor(model=> model.condicion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(model => model.condicion,
+                                       new SelectList(Enum.GetValues(typeof(CondicionesEnum))),
+                                       "Selecciona Condicion")
                     @Html.ValidationMessageFor(model => model.condicion, "*Obligatorio", new { @class = "text-danger" })
-
                 </div>
          </div>
 
@@ -120,7 +118,7 @@
             @Html.LabelFor(model => model.numeroDeFactura, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.numeroDeFactura, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.numeroDeFactura, "*", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.numeroDeFactura, "*Obligatorio", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -133,5 +131,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ver Bienes", "VerBienes")
 </div>

@@ -39,18 +39,18 @@ namespace Inventario.Models
 
 
         [ForeignKey("Especialidad")]
-        public string idEspecialidad { get; set; }
+        public int idEspecialidad { get; set; }
         public virtual Especialidad Especialidad { get; set; }
-        
+       
 
         [StringLength(3)]
         public string ubicacion { get; set; }
 
         [Required]
-        public string estado { get;  set; }
+        public EstadosEnum estado { get;  set; }
 
         [Required]
-        public string condicion { get;  set; }
+        public CondicionesEnum condicion { get;  set; }
 
         //Metodos constructores
         public Bienes()
@@ -64,36 +64,10 @@ namespace Inventario.Models
             marca = "Desconocido";
             modelo = "Desconocido";
             serie = "0000";
-            idEspecialidad = "nin01";
+            idEspecialidad = 00;
             ubicacion = "C-0";
-            estado = "Excelente";
-            condicion = "Activo";
+            estado = estado = EstadosEnum.Excelente;
+            condicion = condicion = CondicionesEnum.Activo;
         }
-
-
-        //public void setNumeroDePatrimonio(string NDP)
-        //{
-        //    numeroDePatrimonio = NDP;
-        //}
-        //public void setCodigoDeBarras(string CDB)
-        //{
-        //    codigoDeBarras = CDB;
-        //}
-        //public void setNumeroDeFactura(string NDF)
-        //{
-        //    numeroDeFactura = NDF;
-        //}
-        //public void setIdEspecialidad(string IE)
-        //{
-        //    idEspecialidad = IE;
-        //}
-        //public void setCondicion(string C)
-        //{
-        //    condicion = C;
-        //}
-        //public void setEstado(string E)
-        //{
-        //    estado = E;
-        //}
     }
 }

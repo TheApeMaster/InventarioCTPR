@@ -11,53 +11,26 @@ namespace Inventario.Services
     public class GeneradorDeListas
     {
         List<SelectListItem> listado;
+        public BienesRepository repo = new BienesRepository();
 
         public GeneradorDeListas()
         {
             listado = new List<SelectListItem>();
         }
 
-
-
-
-
-        public List<SelectListItem> obtenerListaEstados()
-        {
-            listado.Add(
-                new SelectListItem() { Text = "Excelente", Value = "Excelente" }
-            );
-
-            listado.Add(
-                new SelectListItem() { Text = "Bueno", Value = "Bueno" }
-            );
-
-            listado.Add(
-            new SelectListItem() { Text = "Regular", Value = "Regular" }
-             );
-
-            listado.Add(
-            new SelectListItem() { Text = "Malo", Value = "Malo" }
-            );
-            return listado;
-        }
-
-        public List<SelectListItem> obtenerListaCondicion()
-        {
-            listado.Add(
-                new SelectListItem() { Text = "Activo", Value = "activo" }
-            );
-
-            listado.Add(
-                new SelectListItem() { Text = "De Baja", Value = "baja" }
-            );
-
-            return listado;
-        }
-
-        public List<SelectListItem> obtenerListaEspecialidad()
-        {
-            return listado;
-        }
+        //public List<SelectListItem> obtenerListaEspecialidad()
+        //{
+           
+        //    var items = repo.obtenerEspecialidades();
+        //    foreach (var item in items)
+        //    {
+        //        listado.Add(new SelectListItem
+        //        {
+        //            Text = item.nombreEspecialidad,
+        //            Value = item.idEspecialidad.ToString()
+        //        });
+        //    }   
+        //}
 
     }
 
