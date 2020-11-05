@@ -38,11 +38,10 @@ namespace Inventario.Models
         public string serie { get; set; }
 
 
-        //[ForeignKey("Especialidad")]
-       // public int idEspecialidad { get; set; }
-
-       
-        public virtual ICollection<Especialidad> Especialidad { get; set; }
+        //LlaveForanea
+        [ForeignKey("Especialidad")]
+        public int IDEspecialidad { get; set; }
+        public virtual Especialidad Especialidad { get; set; }
 
 
         [StringLength(3)]

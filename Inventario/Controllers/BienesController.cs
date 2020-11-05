@@ -15,15 +15,13 @@ namespace Inventario.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        private BienesRepository repositorio =new BienesRepository();
+        private BienesRepository repositorio =new BienesRepository();//Objeto que proporcionara los datos provenientes de la BD
         
-
-        // GET: Bienes
         public ActionResult VerBienes()
         {
             //var model = repositorio.obtenerTodosLosBienes();
-            var model = repositorio.obtenerBienesActivos();
-           
+
+            var model = repositorio.obtenerBienesActivos();//Extrae solamente los bienes activos
             return View(model);
         }
 
@@ -41,17 +39,16 @@ namespace Inventario.Controllers
             return View(bienes);
         }
 
-        // GET: Bienes/Create
+        
         public ActionResult AnadirBienes()
         {
-            ViewBag.Especialidad = new SelectList(db.Especialidad,"idEspecialidad","nombreEspecialidad");
-            
+            //Este viewbag contiene los datos necesarios para que funcione  adecuadamente el DropDownList
+
+            ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
+            //ViewBag.IDEspecialidad = repositorio.obtenerListaGet();
             return View();
         }
 
-        // POST: Bienes/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AnadirBienes([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
@@ -61,7 +58,7 @@ namespace Inventario.Controllers
                 repositorio.anadirBien(bienes);
             }
 
-            //ViewBag.idEspecialidad = new SelectList(db.Especialidad, "idEspecialidad", "nombreEspecialidad", bienes.idEspecialidad);
+           ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bienes.IDEspecialidad);
             return View(bienes);
         }
 
@@ -87,6 +84,7 @@ namespace Inventario.Controllers
         [HttpGet]
         public ActionResult ActualizarBienes()
         {
+            ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
             return View();
         }
 

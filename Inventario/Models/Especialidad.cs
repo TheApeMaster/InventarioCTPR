@@ -10,17 +10,17 @@ namespace Inventario.Models
     public class Especialidad
     {
        [Key]
-       public int idEspecialidad { get; set; }//Llave Primaria
+       public int ID { get; set; }//Llave Primaria
 
        [StringLength(20)]
         public string nombreEspecialidad { get; set; }
 
-        public virtual Bienes Bien { get; set; }
+        public ICollection<Bienes> Bienes { get; set; }
 
 
         public Especialidad()
         {
-            idEspecialidad = 00;
+            ID = 00;
 
             nombreEspecialidad = "Ninguna";
         }

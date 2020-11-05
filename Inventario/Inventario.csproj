@@ -276,6 +276,7 @@
     <Compile Include="Services\BienesRepository.cs" />
     <Compile Include="Services\GeneradorDeListas.cs" />
     <Compile Include="System\Windows\Forms.cs" />
+    <Compile Include="ViewModels\VerBienesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
