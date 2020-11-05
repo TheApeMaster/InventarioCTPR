@@ -15,7 +15,7 @@ namespace Inventario.Models
        [StringLength(20)]
         public string nombreEspecialidad { get; set; }
 
-        //public Bienes bienes { get; set; }
+        public virtual Bienes Bien { get; set; }
 
 
         public Especialidad()

@@ -10,15 +10,17 @@ namespace Inventario.Models
 
         public DbSet<Especialidad> Especialidad { get; set; }
         public DbSet<Bienes> Bienes { get; set; }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Properties<string>().Where(p => p.Name.StartsWith("numeroDePatrimonio")).Configure(p => p.IsKey());
 
-        //    modelBuilder.Entity<Bienes>().HasRequired(x => x.idEspecialidad);
-        //   base.OnModelCreating(modelBuilder);     
-        //}
+            modelBuilder.Entity<Bienes>().HasRequired(x => x.Especialidad);
+           base.OnModelCreating(modelBuilder);     
+        }
         public ApplicationDbContext() : base("con")
         {
         }
+
 
     }
 }

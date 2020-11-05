@@ -16,7 +16,7 @@ namespace Inventario.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         private BienesRepository repositorio =new BienesRepository();
-
+        
 
         // GET: Bienes
         public ActionResult VerBienes()
@@ -44,8 +44,8 @@ namespace Inventario.Controllers
         // GET: Bienes/Create
         public ActionResult AnadirBienes()
         {
-            ViewBag.idEspecialidad = new SelectList(db.Especialidad,"idEspecialidad","nombreEspecialidad");
-         
+            ViewBag.Especialidad = new SelectList(db.Especialidad,"idEspecialidad","nombreEspecialidad");
+            
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace Inventario.Controllers
                 repositorio.anadirBien(bienes);
             }
 
-            ViewBag.idEspecialidad = new SelectList(db.Especialidad, "idEspecialidad", "nombreEspecialidad", bienes.idEspecialidad);
+            //ViewBag.idEspecialidad = new SelectList(db.Especialidad, "idEspecialidad", "nombreEspecialidad", bienes.idEspecialidad);
             return View(bienes);
         }
 

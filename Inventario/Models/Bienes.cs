@@ -38,10 +38,12 @@ namespace Inventario.Models
         public string serie { get; set; }
 
 
-        [ForeignKey("Especialidad")]
-        public int idEspecialidad { get; set; }
-        public virtual Especialidad Especialidad { get; set; }
+        //[ForeignKey("Especialidad")]
+       // public int idEspecialidad { get; set; }
+
        
+        public virtual ICollection<Especialidad> Especialidad { get; set; }
+
 
         [StringLength(3)]
         public string ubicacion { get; set; }
@@ -64,7 +66,7 @@ namespace Inventario.Models
             marca = "Desconocido";
             modelo = "Desconocido";
             serie = "0000";
-            idEspecialidad = 00;
+            //Especialidad= 00;
             ubicacion = "C-0";
             estado = estado = EstadosEnum.Excelente;
             condicion = condicion = CondicionesEnum.Activo;
