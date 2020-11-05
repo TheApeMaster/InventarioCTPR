@@ -67,6 +67,7 @@ namespace Inventario.Controllers
         {
             if (id == "")
             {
+                ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
                 return RedirectToAction("ActualizarBienes");
             }else
             {
@@ -75,6 +76,8 @@ namespace Inventario.Controllers
                 {
                     return HttpNotFound();
                 }
+
+                ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bien.IDEspecialidad);
                 return View("ActualizarBienes",bien);
             } 
         }
@@ -99,6 +102,7 @@ namespace Inventario.Controllers
                 repositorio.actualizarBien(bienes);
                 return RedirectToAction("VerBienes");
             }
+            ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bienes.IDEspecialidad);
             return View(bienes);
         }
 
