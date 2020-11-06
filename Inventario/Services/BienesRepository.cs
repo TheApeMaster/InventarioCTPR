@@ -24,23 +24,6 @@ namespace Inventario.Services
             }
         }
 
-        public SelectList obtenerListaGet()//Este metodo obtiene los datos para llenar el DropDownList de la vista Anadir Bienes, debe ser usado en el action Get
-        {//Obtiene especificamente las especialidades
-            using (var db = new ApplicationDbContext())
-                try
-                {
-                    SelectList lista = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
-                    return lista;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            
-
-          
-        }
-
        public  List<Bienes> obtenerTodosLosBienes()
         {
             using (var db = new ApplicationDbContext())
@@ -60,10 +43,9 @@ namespace Inventario.Services
             using (var db = new ApplicationDbContext())
             try
             {
-                    db.Configuration.LazyLoadingEnabled = false;
+             db.Configuration.LazyLoadingEnabled = false;
                       var bienes = db.Bienes.SqlQuery("SELECT * FROM dbo.\"Bienes\" where condicion = 0").ToList();
                       return bienes;
-
                 }
             catch (Exception)
             {

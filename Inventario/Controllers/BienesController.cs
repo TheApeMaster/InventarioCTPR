@@ -14,38 +14,19 @@ namespace Inventario.Controllers
     public class BienesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private BienesRepository repositorio = new BienesRepository();//Objeto que proporcionara los datos provenientes de la BD
 
-        private BienesRepository repositorio =new BienesRepository();//Objeto que proporcionara los datos provenientes de la BD
-        
         public ActionResult VerBienes()
         {
-            //var model = repositorio.obtenerTodosLosBienes();
-
             var model = repositorio.obtenerBienesActivos();//Extrae solamente los bienes activos
             return View(model);
         }
 
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bienes bienes = db.Bienes.Find(id);
-            if (bienes == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bienes);
-        }
-
-        
+        //Acciones para anadir Bienes
         public ActionResult AnadirBienes()
         {
             //Este viewbag contiene los datos necesarios para que funcione  adecuadamente el DropDownList
-
             ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
-            //ViewBag.IDEspecialidad = repositorio.obtenerListaGet();
             return View();
         }
 
@@ -57,11 +38,11 @@ namespace Inventario.Controllers
             {
                 repositorio.anadirBien(bienes);
             }
-
-           ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bienes.IDEspecialidad);
+            ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bienes.IDEspecialidad);
             return View(bienes);
         }
 
+        //Acciones Para Actualizar
         [ValidateAntiForgeryToken]
         public ActionResult BuscarBien(string id)
         {
@@ -69,30 +50,25 @@ namespace Inventario.Controllers
             {
                 ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
                 return RedirectToAction("ActualizarBienes");
-            }else
+            } else
             {
                 Bienes bien = repositorio.buscarBien(id);
                 if (bien == null)
                 {
                     return HttpNotFound();
                 }
-
                 ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bien.IDEspecialidad);
-                return View("ActualizarBienes",bien);
-            } 
+                return View("ActualizarBienes", bien);
+            }
         }
-
-
-        //Actualizar Bienes :Get
+        //Accion GetRequest
         [HttpGet]
         public ActionResult ActualizarBienes()
         {
             ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad");
             return View();
         }
-
-        // POST: Bienes/Edit/5
-       
+        //Accion Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ActualizarBienes([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
@@ -105,6 +81,49 @@ namespace Inventario.Controllers
             ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bienes.IDEspecialidad);
             return View(bienes);
         }
+
+        //Acciones para Dar de baja
+
+        [ValidateAntiForgeryToken]
+        public ActionResult BuscarDarBaja(string id)
+        {
+            if (id == "")
+            {
+                return RedirectToAction("DarBaja");
+            }
+            else
+            {
+                Bienes bien = repositorio.buscarBien(id);
+                if (bien == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("DarBaja", bien);
+            }
+        }
+
+        // List<Bienes> bienesDarBaja = new List<Bienes>();
+        [HttpGet]
+        public ActionResult DarBaja()
+        {
+            return View();
+        }
+        List<Bienes> bienesDarBaja = new List<Bienes>();
+        [HttpPost]
+        public ActionResult DarBaja([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
+        {
+            if (ModelState.IsValid)
+            {
+                bienesDarBaja.Add(bienes);
+                return View(bienesDarBaja);
+            }
+          
+
+            
+            //var model = bienesDarBaja;   bienesDarBaja
+            return View(bienesDarBaja);
+        }
+
 
         // GET: Bienes/Delete/5
         public ActionResult Delete(string id)

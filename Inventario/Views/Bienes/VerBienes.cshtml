@@ -24,7 +24,7 @@
        </tr>
    </thead>
     <tbody>
-        
+ 
         @foreach (var item in Model)
         {
             <tr>
@@ -36,12 +36,7 @@
                 <td>@Html.DisplayFor(modelItem => item.serie)</td>
                 <td>@Html.DisplayFor(modelItem => item.ley)</td>
                 <td>@Html.DisplayFor(modelItem => item.ubicacion)</td>
-                              
                 <td>@Html.DisplayFor(modelItem => item.Especialidad.nombreEspecialidad)</td>
-
-               
-
-            
                 <td>@Html.DisplayFor(modelItem => item.estado)</td>
                 <td>@Html.DisplayFor(modelItem => item.condicion)</td>
                 <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
