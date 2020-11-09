@@ -60,6 +60,7 @@ namespace Inventario.Services
             using(var db = new ApplicationDbContext())
             try
             {
+                db.Configuration.LazyLoadingEnabled = false;
                 return db.Bienes.Find(id);
             }
             catch (Exception)
@@ -68,10 +69,29 @@ namespace Inventario.Services
             }
         }
 
+        public void darDeBaja(List<Bienes> bienesM)
+        {
+            using (var db = new ApplicationDbContext())
+                try
+                {
+                    foreach (var item in bienesM)
+                    {
+                        item.condicion = CondicionesEnum.DeBaja;
+                        db.Entry(item).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+        }
+
+
         public void actualizarBien(Bienes bien)//Este metodo actualiza los datos
         {
             using (var db = new ApplicationDbContext())
-
                 try
                 {
                     db.Entry(bien).State = EntityState.Modified;

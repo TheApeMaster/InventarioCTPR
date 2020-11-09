@@ -8,16 +8,22 @@ using System.Web;
 using System.Web.Mvc;
 using Inventario.Models;
 using Inventario.Services;
+using Inventario.ViewModels;
 
 namespace Inventario.Controllers
 {
     public class BienesController : Controller
     {
+        List<Bienes> bienesDarBaja = new List<Bienes>();
         private ApplicationDbContext db = new ApplicationDbContext();
         private BienesRepository repositorio = new BienesRepository();//Objeto que proporcionara los datos provenientes de la BD
+        private TempRepository tempRepositorio = new TempRepository();
 
+        //Accion para ver bienes
         public ActionResult VerBienes()
         {
+         
+
             var model = repositorio.obtenerBienesActivos();//Extrae solamente los bienes activos
             return View(model);
         }
@@ -58,6 +64,7 @@ namespace Inventario.Controllers
                     return HttpNotFound();
                 }
                 ViewBag.IDEspecialidad = new SelectList(db.Especialidad, "ID", "nombreEspecialidad", bien.IDEspecialidad);
+              
                 return View("ActualizarBienes", bien);
             }
         }
@@ -84,9 +91,10 @@ namespace Inventario.Controllers
 
         //Acciones para Dar de baja
 
+       
         [ValidateAntiForgeryToken]
         public ActionResult BuscarDarBaja(string id)
-        {
+        {  
             if (id == "")
             {
                 return RedirectToAction("DarBaja");
@@ -98,7 +106,12 @@ namespace Inventario.Controllers
                 {
                     return HttpNotFound();
                 }
-                return View("DarBaja", bien);
+                else
+                {
+                    tempRepositorio.anadirBienTemp(bien);
+                    List<Bienes>bienesDarBaja= tempRepositorio.extraerData();
+                    return View("DarBaja",bienesDarBaja);
+                }
             }
         }
 
@@ -106,22 +119,23 @@ namespace Inventario.Controllers
         [HttpGet]
         public ActionResult DarBaja()
         {
-            return View();
-        }
-        List<Bienes> bienesDarBaja = new List<Bienes>();
-        [HttpPost]
-        public ActionResult DarBaja([Bind(Include = "numeroDePatrimonio,codigoDeBarras,descripcion,anadidoPor,numeroDeFactura,ley,marca,modelo,serie,idEspecialidad,ubicacion,estado,condicion")] Bienes bienes)
-        {
-            if (ModelState.IsValid)
-            {
-                bienesDarBaja.Add(bienes);
-                return View(bienesDarBaja);
-            }
-          
 
+            tempRepositorio.limpiar();
+
+
+            return View("DarBaja");
+        }
+ 
+        [HttpPost]
+        public ActionResult DarBaja(List<Bienes> bienes)
+        {
+
+          List<Bienes> lista =  tempRepositorio.extraerData();
+     
+            repositorio.darDeBaja(lista);
             
             //var model = bienesDarBaja;   bienesDarBaja
-            return View(bienesDarBaja);
+            return View();
         }
 
 

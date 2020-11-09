@@ -1,5 +1,5 @@
 ﻿@*@model List<Inventario.Models.Bienes>*@
-@model IEnumerable<Inventario.Models.Bienes>
+@model List<Inventario.Models.Bienes>
 @{
     ViewBag.Title = "Dar de Baja";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
@@ -60,25 +60,10 @@
                         <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
                     </tr>
                 }
-            }
-            @*@foreach (var item in Model)
-               {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
-                    <td>@Html.DisplayFor(modelItem => item.codigoDeBarras)</td>
-                    <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.marca)</td>
-                    <td>@Html.DisplayFor(modelItem => item.modelo)</td>
-                    <td>@Html.DisplayFor(modelItem => item.serie)</td>
-                    <td>@Html.DisplayFor(modelItem => item.ubicacion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.estado)</td>
-                    <td>@Html.DisplayFor(modelItem => item.condicion)</td>
-                    <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
-                </tr>
-               }*@  
+            }  
         </tbody>
     </table>
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("DarBaja","Bienes",FormMethod.Post)) {
         @Html.AntiForgeryToken()
         <div class="form-actions">
             <input type="submit" value="Dar de Baja" class="btn-light" /> 
