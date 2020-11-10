@@ -25,21 +25,24 @@
     </div>
 
     @*Barra de navegacion*@
-    <div class="container-fluid border-dark">
+    <div class="container-fluid">
+      
+            
                 <ul class="nav nav-justified bgNaranja">
-                    <li class="nav-item">@Html.ActionLink("Inicio","Index", "Home", null, new { @class = "nav-link text-dark" })</li>
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link text-dark" })</li>
                     <li class="nav-item">@Html.ActionLink("Ver Bienes", "VerBienes", "Bienes", null, new { @class = "nav-link text-dark" })</li>
                     <li class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" role="button">Administrar Bienes</a> 
-                        <ul class="dropdown-menu bg-warning"role="menu"> 
+                        <a href="#" class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" role="button">Administrar Bienes</a>
+                        <ul class="dropdown-menu bg-warning" role="menu">
                             @Html.ActionLink("Anadir Bienes", "AnadirBienes", "Bienes", null, new { @class = "dropdown-item" })
                             @Html.ActionLink("Actualizar Bienes", "ActualizarBienes", "Bienes", null, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Dar de baja Bienes", "DarBaja", "Bienes", null, new {@class = "dropdown-item"})
+                            @Html.ActionLink("Dar de baja Bienes", "DarBaja", "Bienes", null, new { @class = "dropdown-item" })
                         </ul>
                     </li>
-                    <li class="nav-item">@Html.ActionLink("Administrar Usuarios", "Index", "Home",null, new { @class = "nav-link text-dark" })</li>
-                    <li class="nav-item">@Html.ActionLink("Generar Reporte", "Index", "Home",null, new { @class = "nav-link text-dark" })</li>
-                </ul>
+                    <li class="nav-item">@Html.ActionLink("Administrar Usuarios", "Index", "Home", null, new { @class = "nav-link text-dark" })</li>
+                    <li class="nav-item">@Html.ActionLink("Generar Reporte", "Index", "Home", null, new { @class = "nav-link text-dark" })</li>
+    
+         
      </div>
     
     @*Contenido de otras vistas*@

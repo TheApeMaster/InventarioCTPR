@@ -20,7 +20,41 @@ namespace Inventario.Controllers
         private TempRepository tempRepositorio = new TempRepository();
 
         //Accion para ver bienes
-        public ActionResult VerBienes()
+        public ActionResult BuscarVerBienes(string id)
+        {
+            List<Bienes> lista = new List<Bienes>();
+      
+            if (id == "")
+            {
+                lista = repositorio.obtenerBienesActivos();
+                return View("VerBienes",lista);
+            }
+            else
+            {
+                Bienes bien = new Bienes();
+                bien = repositorio.buscarBien(id);
+                if (bien == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    lista.Add(bien);
+                    return View("VerBienes", lista);
+                }
+            }
+        }
+
+
+    public ActionResult RestablecerLista()
+        {
+            List<Bienes> lista = new List<Bienes>();
+            lista = repositorio.obtenerBienesActivos();
+            return View("VerBienes",lista);
+        }
+
+
+    public ActionResult VerBienes()
         {
             List<Bienes> bienesSinFiltrar = repositorio.obtenerTodosLosBienes();
             var model = filtro.filtrarBienesAcivos(bienesSinFiltrar);//Extrae solamente los bienes activos
@@ -89,8 +123,6 @@ namespace Inventario.Controllers
         }
 
         //Acciones para Dar de baja
-
-       
         [ValidateAntiForgeryToken]
         public ActionResult BuscarDarBaja(string id)
         {  
@@ -136,7 +168,6 @@ namespace Inventario.Controllers
             //var model = bienesDarBaja;   bienesDarBaja
             return View();
         }
-
 
         // GET: Bienes/Delete/5
         public ActionResult Delete(string id)

@@ -7,21 +7,25 @@
 }
 
     <h2 class="text-center titulo">Ver Bienes</h2>
-  
-   @using (Html.BeginForm())
-   {
-    <div class="row">
-            <div class="form-inline">
-                <h3>Buscar Bien</h3>
-                <hr />
-                <div class="" >
-                    <input type="text" class="" name="id" placeholder="Ej: CIF000 o 77854922">
-                </div>
-                    <input type="submit" value="buscar" class="form-inline" />
-            </div>
-   </div>
-   }
-   
+<div class="row">
+    @using (Html.BeginForm("BuscarVerBienes", "Bienes",FormMethod.Post,new {@class ="form-inline col-7" }))
+    {
+        <div class="form-group">
+            <label>
+                Buscar Bien:
+                <input type="text" class="" name="id" placeholder="Numero de patrimonio" />
+                <input type="submit" value="buscar" class=" " />
+            </label>  
+        </div>
+    }
+
+    @using (Html.BeginForm("RestablecerLista","Bienes"))
+    {
+        <div class="col-3">
+            <input type="submit" value="Reestablecer" class="" />
+        </div>
+    }
+</div>
 
 
 
@@ -64,7 +68,7 @@
                         <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
                         <td>@Html.DisplayFor(modelItem => item.anadidoPor)</td>
                     </tr>
-                }
+                    }
             </tbody>
         </table>
     </div> 

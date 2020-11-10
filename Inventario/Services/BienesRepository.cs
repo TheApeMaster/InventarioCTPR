@@ -61,7 +61,11 @@ namespace Inventario.Services
             try
             {
                 db.Configuration.LazyLoadingEnabled = false;
-                return db.Bienes.Find(id);
+                Bienes bien = db.Bienes
+                .Include(a => a.Especialidad)
+                .Where(a => a.numeroDePatrimonio == id)
+                .SingleOrDefault();
+                return bien;
             }
             catch (Exception)
             {
