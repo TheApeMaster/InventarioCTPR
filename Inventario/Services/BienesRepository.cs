@@ -29,7 +29,7 @@ namespace Inventario.Services
             using (var db = new ApplicationDbContext())
                 try
                 {
-                    return db.Bienes.ToList();
+                    return db.Bienes.Include(e => e.Especialidad).ToList();
                 }
                 catch (Exception)
                 {

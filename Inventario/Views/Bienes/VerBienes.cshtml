@@ -5,43 +5,68 @@
     ViewBag.Title = "Ver Bienes";
     Layout = "~/Views/Shared/LayoutPage.cshtml";
 }
-<table class="table">
-   <thead>
-       <tr>
-            <th>Numero de patrimonio</th>
-            <th>Codigo de Barras</th>
-           <th>Descripcion</th>
-           <th>Marca</th>
-           <th>Modelo</th>
-           <th>Serie</th>
-           <th>Ley que financia</th>
-           <th>Ubicacion</th>
-           <th>Especialidad</th>
-           <th>Estado</th>
-           <th>Condicion</th>
-           <th>Numero de factura</th>
-           <th>anadido por</th>
-       </tr>
-   </thead>
-    <tbody>
- 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
-                <td>@Html.DisplayFor(modelItem => item.codigoDeBarras)</td>
-                <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
-                <td>@Html.DisplayFor(modelItem => item.marca)</td>
-                <td>@Html.DisplayFor(modelItem => item.modelo)</td>
-                <td>@Html.DisplayFor(modelItem => item.serie)</td>
-                <td>@Html.DisplayFor(modelItem => item.ley)</td>
-                <td>@Html.DisplayFor(modelItem => item.ubicacion)</td>
-                <td>@Html.DisplayFor(modelItem => item.Especialidad.nombreEspecialidad)</td>
-                <td>@Html.DisplayFor(modelItem => item.estado)</td>
-                <td>@Html.DisplayFor(modelItem => item.condicion)</td>
-                <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
-                <td>@Html.DisplayFor(modelItem => item.anadidoPor)</td>            
-            </tr>
-        }
-    </tbody>
-</table>
+
+    <h2 class="text-center titulo">Ver Bienes</h2>
+  
+   @using (Html.BeginForm())
+   {
+    <div class="row">
+            <div class="form-inline">
+                <h3>Buscar Bien</h3>
+                <hr />
+                <div class="" >
+                    <input type="text" class="" name="id" placeholder="Ej: CIF000 o 77854922">
+                </div>
+                    <input type="submit" value="buscar" class="form-inline" />
+            </div>
+   </div>
+   }
+   
+
+
+
+    <hr />
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-responsive-sm">
+            <thead class="table-secondary border-bottom">
+                <tr>
+                    <td>Número de patrimonio</td>
+                    <td>Código de Barras</td>
+                    <td>Descripción</td>
+                    <td>Marca</td>
+                    <td>Modelo</td>
+                    <td>Serie</td>
+                    <td>Ley que financia</td>
+                    <td>Ubicacion</td>
+                    <td>Especialidad</td>
+                    <td>Estado</td>
+                    <td>Condicion</td>
+                    <td>Número de factura</td>
+                    <td>Añadido por</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.numeroDePatrimonio)</td>
+                        <td>@Html.DisplayFor(modelItem => item.codigoDeBarras)</td>
+                        <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.marca)</td>
+                        <td>@Html.DisplayFor(modelItem => item.modelo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.serie)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ley)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ubicacion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Especialidad.nombreEspecialidad)</td>
+                        <td>@Html.DisplayFor(modelItem => item.estado)</td>
+                        <td>@Html.DisplayFor(modelItem => item.condicion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.numeroDeFactura)</td>
+                        <td>@Html.DisplayFor(modelItem => item.anadidoPor)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div> 
+
+</div>

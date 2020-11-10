@@ -14,7 +14,7 @@ namespace Inventario.Controllers
 {
     public class BienesController : Controller
     {
-        List<Bienes> bienesDarBaja = new List<Bienes>();
+        private Filtrador filtro = new Filtrador();
         private ApplicationDbContext db = new ApplicationDbContext();
         private BienesRepository repositorio = new BienesRepository();//Objeto que proporcionara los datos provenientes de la BD
         private TempRepository tempRepositorio = new TempRepository();
@@ -22,9 +22,8 @@ namespace Inventario.Controllers
         //Accion para ver bienes
         public ActionResult VerBienes()
         {
-         
-
-            var model = repositorio.obtenerBienesActivos();//Extrae solamente los bienes activos
+            List<Bienes> bienesSinFiltrar = repositorio.obtenerTodosLosBienes();
+            var model = filtro.filtrarBienesAcivos(bienesSinFiltrar);//Extrae solamente los bienes activos
             return View(model);
         }
 

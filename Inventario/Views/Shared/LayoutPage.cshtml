@@ -25,7 +25,7 @@
     </div>
 
     @*Barra de navegacion*@
-    <div class="container-fluid float">
+    <div class="container-fluid border-dark">
                 <ul class="nav nav-justified bgNaranja">
                     <li class="nav-item">@Html.ActionLink("Inicio","Index", "Home", null, new { @class = "nav-link text-dark" })</li>
                     <li class="nav-item">@Html.ActionLink("Ver Bienes", "VerBienes", "Bienes", null, new { @class = "nav-link text-dark" })</li>
@@ -43,7 +43,7 @@
      </div>
     
     @*Contenido de otras vistas*@
-    <div class="container justify-content-center">
+    <div class="container-fluid justify-content-center">
         @RenderBody()
     </div>
 
